@@ -27,14 +27,14 @@
 ### 🖥️ Desktop View - Light Mode
 *Full dashboard experience with interactive charts and analytics overview*
 
-![Desktop Dashboard](./screenshots/desktop.png)
+![Desktop Dashboard](./public/screenshots/desktop.png)
 
 ---
 
 ### 🌙 Desktop View - Dark Mode
 *Elegant dark theme for reduced eye strain during extended analysis sessions*
 
-![Dark Mode Dashboard](./screenshots/dark-mode.png)
+![Dark Mode Dashboard](./public/screenshots/dark-mode.png)
 
 ---
 
