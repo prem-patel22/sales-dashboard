@@ -41,7 +41,7 @@
 ### 📱 Mobile Responsive Design
 *Fully optimized mobile experience with touch-friendly controls*
 
-<img src="./screenshots/mobile.png" alt="Mobile Dashboard" width="375">
+<img src="./public/screenshots/mobile.png" alt="Mobile Dashboard" width="375">
 
 ---
 
@@ -50,21 +50,21 @@
 <table>
   <tr>
     <td width="50%">
-      <img src="./screenshots/bar-chart.png" alt="Bar Chart View" width="100%"/>
+      <img src="./public/screenshots/bar-chart.png" alt="Bar Chart View" width="100%"/>
       <p align="center"><b>📊 Bar Chart View</b><br/>Compare sales performance across periods</p>
     </td>
     <td width="50%">
-      <img src="./screenshots/line-chart.png" alt="Line Chart View" width="100%"/>
+      <img src="./public/screenshots/line-chart.png" alt="Line Chart View" width="100%"/>
       <p align="center"><b>📈 Line Chart View</b><br/>Track trends and patterns over time</p>
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <img src="./screenshots/pie-chart.png" alt="Pie Chart View" width="100%"/>
+      <img src="./public/screenshots/pie-chart.png" alt="Pie Chart View" width="100%"/>
       <p align="center"><b>🥧 Pie Chart View</b><br/>Visualize distribution and proportions</p>
     </td>
     <td width="50%">
-      <img src="./screenshots/filters.png" alt="Advanced Filters" width="100%"/>
+      <img src="./public/screenshots/filters.png" alt="Advanced Filters" width="100%"/>
       <p align="center"><b>🔍 Advanced Filtering</b><br/>Drill down into specific data segments</p>
     </td>
   </tr>
@@ -77,15 +77,15 @@
 <table>
   <tr>
     <td width="33%">
-      <img src="./screenshots/analytics-cards.png" alt="Analytics Overview" width="100%"/>
+      <img src="./public/screenshots/analytics-cards.png" alt="Analytics Overview" width="100%"/>
       <p align="center"><b>📊 Analytics Cards</b></p>
     </td>
     <td width="33%">
-      <img src="./screenshots/export-data.png" alt="Data Export" width="100%"/>
+      <img src="./public/screenshots/export-data.png" alt="Data Export" width="100%"/>
       <p align="center"><b>💾 Data Export</b></p>
     </td>
     <td width="33%">
-      <img src="./screenshots/regional-view.png" alt="Regional Analytics" width="100%"/>
+      <img src="./public/screenshots/regional-view.png" alt="Regional Analytics" width="100%"/>
       <p align="center"><b>🌍 Regional Insights</b></p>
     </td>
   </tr>
