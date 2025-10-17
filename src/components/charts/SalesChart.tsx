@@ -21,7 +21,7 @@ import ChartSwitcher from './ChartSwitcher';
 import FilterInput from './FilterInput';
 import AdvancedFilters from './AdvancedFilters';
 import LoadingSpinner from '../ui/LoadingSpinner';
-import { useDebounce } from '@/hooks/useDebounce'; // ✅ ensure you have this hook in /src/hooks/useDebounce.ts
+import { useDebounce } from '@/hooks/useDebounce';
 
 interface SalesChartProps {
   year: number;
@@ -95,32 +95,47 @@ export default function SalesChart({ year }: SalesChartProps) {
     switch (chartType) {
       case 'bar':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="text-xs">
             <BarChart data={filteredData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip
+              <XAxis 
+                dataKey="month" 
+                angle={-45}
+                textAnchor="end"
+                height={60}
+                interval={0}
+                fontSize={10}
+              />
+              <YAxis fontSize={10} />
+              <Tooltip 
                 formatter={(value, name) => {
                   if (name === 'sales') return [value.toLocaleString(), 'Sales'];
                   if (name === 'revenue') return [`$${value.toLocaleString()}`, 'Revenue'];
                   return [value, name];
                 }}
               />
-              <Legend />
+              <Legend 
+                wrapperStyle={{
+                  fontSize: '12px',
+                  paddingTop: '10px'
+                }}
+              />
               <Bar dataKey="sales" fill="#0088FE" name="Sales" />
-              <Bar dataKey="revenue" fill="#00C49F" name="Revenue" />
+              <Bar dataKey="revenue" fill="#00C49F" name="Revenue ($)" />
             </BarChart>
           </ResponsiveContainer>
         );
 
       case 'line':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="text-xs">
             <LineChart data={filteredData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
+              <XAxis 
+                dataKey="month"
+                fontSize={10}
+              />
+              <YAxis fontSize={10} />
               <Tooltip
                 formatter={(value, name) => {
                   if (name === 'sales') return [value.toLocaleString(), 'Sales'];
@@ -128,7 +143,12 @@ export default function SalesChart({ year }: SalesChartProps) {
                   return [value, name];
                 }}
               />
-              <Legend />
+              <Legend 
+                wrapperStyle={{
+                  fontSize: '12px',
+                  paddingTop: '10px'
+                }}
+              />
               <Line type="monotone" dataKey="sales" stroke="#0088FE" name="Sales" strokeWidth={2} />
               <Line type="monotone" dataKey="revenue" stroke="#00C49F" name="Revenue" strokeWidth={2} />
             </LineChart>
@@ -137,7 +157,7 @@ export default function SalesChart({ year }: SalesChartProps) {
 
       case 'pie':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="text-xs">
             <PieChart>
               <Pie
                 data={pieData}
@@ -145,7 +165,7 @@ export default function SalesChart({ year }: SalesChartProps) {
                 cy="50%"
                 labelLine={false}
                 label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
-                outerRadius={150}
+                outerRadius={100}
                 fill="#8884d8"
                 dataKey="value"
                 nameKey="name"
@@ -155,7 +175,12 @@ export default function SalesChart({ year }: SalesChartProps) {
                 ))}
               </Pie>
               <Tooltip formatter={(value) => [value.toLocaleString(), 'Sales']} />
-              <Legend />
+              <Legend 
+                wrapperStyle={{
+                  fontSize: '12px',
+                  paddingTop: '10px'
+                }}
+              />
             </PieChart>
           </ResponsiveContainer>
         );
@@ -167,9 +192,9 @@ export default function SalesChart({ year }: SalesChartProps) {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-gray-800">Sales Dashboard - {year}</h2>
-        <div className="text-sm text-gray-500">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">Sales Dashboard - {year}</h2>
+        <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
           {loading ? 'Loading...' : `${filteredData.length} records`}
         </div>
       </div>
@@ -187,15 +212,18 @@ export default function SalesChart({ year }: SalesChartProps) {
       {renderChart()}
 
       {!loading && !error && filteredData.length > 0 && (
-        <div className="mt-4 text-sm text-gray-600 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <p className="font-semibold">Records: {filteredData.length} of {data.length}</p>
+        <div className="mt-4 grid grid-cols-1 gap-2">
+          <div className="flex justify-between">
+            <span className="font-semibold text-xs">Records:</span>
+            <span className="text-xs">{filteredData.length} of {data.length}</span>
           </div>
-          <div>
-            <p className="font-semibold">Total Sales: {filteredData.reduce((sum, item) => sum + item.sales, 0).toLocaleString()}</p>
+          <div className="flex justify-between">
+            <span className="font-semibold text-xs">Total Sales:</span>
+            <span className="text-xs">{filteredData.reduce((sum, item) => sum + item.sales, 0).toLocaleString()}</span>
           </div>
-          <div>
-            <p className="font-semibold">Total Revenue: ${filteredData.reduce((sum, item) => sum + item.revenue, 0).toLocaleString()}</p>
+          <div className="flex justify-between">
+            <span className="font-semibold text-xs">Total Revenue:</span>
+            <span className="text-xs">${filteredData.reduce((sum, item) => sum + item.revenue, 0).toLocaleString()}</span>
           </div>
         </div>
       )}

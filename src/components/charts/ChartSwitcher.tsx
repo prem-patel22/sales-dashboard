@@ -9,18 +9,18 @@ interface ChartSwitcherProps {
 
 export default function ChartSwitcher({ chartType, onChartTypeChange }: ChartSwitcherProps) {
   const chartTypes: { type: ChartType; label: string }[] = [
-    { type: 'bar', label: 'Bar Chart' },
-    { type: 'line', label: 'Line Chart' },
-    { type: 'pie', label: 'Pie Chart' },
+    { type: 'bar', label: 'Bar' }, // Shorter labels for mobile
+    { type: 'line', label: 'Line' },
+    { type: 'pie', label: 'Pie' },
   ];
 
   return (
-    <div className="flex space-x-2 mb-4">
+    <div className="flex flex-wrap gap-1 mb-4">
       {chartTypes.map(({ type, label }) => (
         <button
           key={type}
           onClick={() => onChartTypeChange(type)}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+          className={`px-3 py-2 rounded-md text-xs font-medium transition-colors flex-1 min-w-[60px] ${
             chartType === type
               ? 'bg-blue-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
