@@ -64,7 +64,7 @@
       <p align="center"><b>🥧 Pie Chart View</b><br/>Visualize distribution and proportions</p>
     </td>
     <td width="50%">
-      <img src="./public/screenshots/filters.png" alt="Advanced Filters" width="100%"/>
+      <img src="./public/screenshots/filter1.png" alt="Advanced Filters" width="100%"/>
       <p align="center"><b>🔍 Advanced Filtering</b><br/>Drill down into specific data segments</p>
     </td>
   </tr>
