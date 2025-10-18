@@ -2,7 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Add smooth transitions for all elements */
-* {
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+/* Mobile touch fixes - Enhanced */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+  }
+}
+
+/* Mobile button improvements */
+@layer components {
+  .mobile-tap-target {
+    min-height: 60px;
+    min-width: 60px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Ensure proper mobile viewport */
+@layer utilities {
+  @media (max-width: 768px) {
+    /* Prevent zoom on inputs */
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    
+    /* Better button sizing for mobile */
+    button, [role="button"] {
+      min-height: 60px !important;
+      min-width: 60px !important;
+      cursor: pointer !important;
+    }
+    
+    /* Force pointer cursor on mobile */
+    .cursor-pointer {
+      cursor: pointer !important;
+    }
+  }
+}
+
+/* Specific fixes for mobile browsers */
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    background-color: inherit !important;
+  }
+  
+  button:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s !important;
+  }
 }
